@@ -1,0 +1,83 @@
+<mxfile host="Electron" modified="2023-11-23T14:31:20.377Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="mikvDTfX_7Sw0EI1GWda" version="22.1.2" type="device" pages="2">
+  <diagram name="Context" id="mqAS-xSVoIPqpoYSdwAr">
+    <mxGraphModel dx="1036" dy="702" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sp9RealpH--W3Z6ICZqD-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sp9RealpH--W3Z6ICZqD-2" target="sp9RealpH--W3Z6ICZqD-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp9RealpH--W3Z6ICZqD-2" value="Retail Investor / Coder" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="275" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sp9RealpH--W3Z6ICZqD-7" value="collects data using" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sp9RealpH--W3Z6ICZqD-4" target="sp9RealpH--W3Z6ICZqD-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp9RealpH--W3Z6ICZqD-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sp9RealpH--W3Z6ICZqD-4" target="sp9RealpH--W3Z6ICZqD-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sp9RealpH--W3Z6ICZqD-10" value="preserves data using" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="sp9RealpH--W3Z6ICZqD-9" vertex="1" connectable="0">
+          <mxGeometry x="-0.2109" relative="1" as="geometry">
+            <mxPoint x="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sp9RealpH--W3Z6ICZqD-4" value="Kyna&lt;br&gt;(software system)&lt;br&gt;&lt;br&gt;A suite of software apps for collecting stock market information, aggregating them, backtesting against them, and reporting on results of tests or analysis.&lt;br&gt;&lt;br&gt;Available on public GitHub repo." style="html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="270" y="230" width="245" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="sp9RealpH--W3Z6ICZqD-5" value="Data Providers&lt;br&gt;(Web APIs)&lt;br&gt;&lt;br&gt;HTTP APIs providing company data, price action data, option data, or news." style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="270" y="540" width="245" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="sp9RealpH--W3Z6ICZqD-8" value="Kyna Databases&lt;br&gt;&lt;br&gt;A handful of PostgreSQL databases hosted locally for the user." style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="680" y="230" width="245" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="O4RmJ2laeCB84Qd1TzDS" name="Architecture">
+    <mxGraphModel dx="1036" dy="702" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rsMs3Y7LeW3e5SGFWNjx-3" value="User Interfaces&lt;br&gt;(CLI)" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="560" y="210" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="rsMs3Y7LeW3e5SGFWNjx-5" value="Kyna.ApplicationServices&lt;br&gt;&lt;br&gt;C# libraries providing workflow services." style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="430" y="320" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="rsMs3Y7LeW3e5SGFWNjx-6" value="Kyna.Infrastructure&lt;br&gt;&lt;br&gt;C# libraries providing access to all things outside the code base. File system, databases, remote APIS, etc. are all managed here.&lt;br&gt;&lt;br&gt;The &quot;infrastructure&quot; speaks publicly in terms of the &quot;domain.&quot;" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="430" y="510" width="180" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="rsMs3Y7LeW3e5SGFWNjx-8" value="Domain&lt;br&gt;&lt;br&gt;C# libraries providing data structures related to the application domain." style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="430" y="800" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="rsMs3Y7LeW3e5SGFWNjx-9" value="User Interfaces&lt;br&gt;(API)&lt;br&gt;???" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="380" y="210" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="rsMs3Y7LeW3e5SGFWNjx-10" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" parent="1" source="rsMs3Y7LeW3e5SGFWNjx-9" target="rsMs3Y7LeW3e5SGFWNjx-5" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="240" y="340" as="sourcePoint" />
+            <mxPoint x="400" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rsMs3Y7LeW3e5SGFWNjx-11" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" parent="1" source="rsMs3Y7LeW3e5SGFWNjx-3" target="rsMs3Y7LeW3e5SGFWNjx-5" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="230" y="460" as="sourcePoint" />
+            <mxPoint x="390" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rsMs3Y7LeW3e5SGFWNjx-12" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" parent="1" source="rsMs3Y7LeW3e5SGFWNjx-5" target="rsMs3Y7LeW3e5SGFWNjx-6" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="240" y="470" as="sourcePoint" />
+            <mxPoint x="400" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rsMs3Y7LeW3e5SGFWNjx-13" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" parent="1" source="rsMs3Y7LeW3e5SGFWNjx-6" target="rsMs3Y7LeW3e5SGFWNjx-8" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="250" y="480" as="sourcePoint" />
+            <mxPoint x="410" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{AEE67127-FAF3-4F6C-8969-7AFD88CA84A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kyna.Prototype.Cli", "apps\Kyna.Prototype.Cli\Kyna.Prototype.Cli.csproj", "{971258A5-D8D1-4043-B6F8-DB66A923467F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{E20174C7-2EA2-4EC0-B9E8-25B0E173D27D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kyna.ApplicationServices", "libs\Kyna.ApplicationServices\Kyna.ApplicationServices.csproj", "{92D7AE5D-7C40-46BB-9F46-85909DFD1D9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kyna.Infrastructure", "libs\Kyna.Infrastructure\Kyna.Infrastructure.csproj", "{9BD8B881-B114-46BB-B82B-E0DCF32E91E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2F5BFC39-69E5-439B-B2A4-933B3B981EB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kyna.ApplicationServices.Tests", "tests\Kyna.ApplicationServices.Tests\Kyna.ApplicationServices.Tests.csproj", "{DAA51748-FC85-4D2A-AF6E-15BACA08DF3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kyna.Infrastructure.Tests", "tests\Kyna.Infrastructure.Tests\Kyna.Infrastructure.Tests.csproj", "{A5793446-3423-4847-991C-DCA9B5D1A65F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{971258A5-D8D1-4043-B6F8-DB66A923467F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{971258A5-D8D1-4043-B6F8-DB66A923467F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{971258A5-D8D1-4043-B6F8-DB66A923467F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{971258A5-D8D1-4043-B6F8-DB66A923467F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92D7AE5D-7C40-46BB-9F46-85909DFD1D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92D7AE5D-7C40-46BB-9F46-85909DFD1D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92D7AE5D-7C40-46BB-9F46-85909DFD1D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92D7AE5D-7C40-46BB-9F46-85909DFD1D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BD8B881-B114-46BB-B82B-E0DCF32E91E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BD8B881-B114-46BB-B82B-E0DCF32E91E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BD8B881-B114-46BB-B82B-E0DCF32E91E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BD8B881-B114-46BB-B82B-E0DCF32E91E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAA51748-FC85-4D2A-AF6E-15BACA08DF3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA51748-FC85-4D2A-AF6E-15BACA08DF3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA51748-FC85-4D2A-AF6E-15BACA08DF3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA51748-FC85-4D2A-AF6E-15BACA08DF3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5793446-3423-4847-991C-DCA9B5D1A65F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5793446-3423-4847-991C-DCA9B5D1A65F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5793446-3423-4847-991C-DCA9B5D1A65F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5793446-3423-4847-991C-DCA9B5D1A65F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{971258A5-D8D1-4043-B6F8-DB66A923467F} = {AEE67127-FAF3-4F6C-8969-7AFD88CA84A8}
+		{92D7AE5D-7C40-46BB-9F46-85909DFD1D9C} = {E20174C7-2EA2-4EC0-B9E8-25B0E173D27D}
+		{9BD8B881-B114-46BB-B82B-E0DCF32E91E9} = {E20174C7-2EA2-4EC0-B9E8-25B0E173D27D}
+		{DAA51748-FC85-4D2A-AF6E-15BACA08DF3F} = {2F5BFC39-69E5-439B-B2A4-933B3B981EB7}
+		{A5793446-3423-4847-991C-DCA9B5D1A65F} = {2F5BFC39-69E5-439B-B2A4-933B3B981EB7}
+	EndGlobalSection
+EndGlobal
