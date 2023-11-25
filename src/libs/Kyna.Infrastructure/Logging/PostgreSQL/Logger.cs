@@ -49,7 +49,7 @@ internal sealed class Logger : ILogger
                     LogLevel = logLevel.ToString(),
                     Message = exception?.Message,
                     Exception = exception?.ToString(),
-                    Scope = scope?.ScopeMessage
+                    Scope = scope?.ScopeMessage ?? scope?.ScopeMessage
                 };
             }
             else
@@ -73,7 +73,7 @@ internal sealed class Logger : ILogger
                         Message = item!.Message,
                         Exception = item.Exception?.ToString(),
                         LogLevel = item.LogLevel.ToString(),
-                        Scope = item.Scope
+                        Scope = item.Scope ?? scope?.ScopeMessage
                     };
                 }
                 else
@@ -84,7 +84,8 @@ internal sealed class Logger : ILogger
                         {
                             Message = state.ToString(),
                             Exception = exception?.ToString(),
-                            LogLevel = logLevel.ToString()
+                            LogLevel = logLevel.ToString(),
+                            Scope = scope?.ScopeMessage
                         };
                     }
                     else
@@ -93,7 +94,8 @@ internal sealed class Logger : ILogger
                         {
                             Message = formatter(state, exception),
                             Exception = exception?.ToString(),
-                            LogLevel = logLevel.ToString()
+                            LogLevel = logLevel.ToString(),
+                            Scope = scope?.ScopeMessage
                         };
                     }
                 }
