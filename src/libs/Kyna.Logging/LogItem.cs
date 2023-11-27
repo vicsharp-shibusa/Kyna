@@ -20,10 +20,21 @@ public class LogItem
         ProcessId = processId;
     }
 
-    public LogItem(Exception exception, string? scope = null, string? context = null, Guid? processId = null)
-        : this(exception.Message, LogLevel.Critical, scope, context, processId)
+    public LogItem(Exception exception, string? scope = null, string? context = null, Guid? processId = null,
+        LogLevel logLevel = LogLevel.Critical)
+        : this(exception.Message, logLevel, scope, context, processId)
     {
         Exception = exception;
+    }
+
+    public LogItem(int eventId, string? eventName = null, string? context = null, Guid? processId = null)
+        : this(new EventId(eventId, eventName), context, processId) { }
+
+    public LogItem(EventId eventId, string? context = null, Guid? processId = null)
+    {
+        EventId = eventId;
+        Context = context;
+        ProcessId = processId;
     }
 
     public LogLevel LogLevel { get; init; } = LogLevel.Information;
@@ -35,8 +46,7 @@ public class LogItem
     public Guid? ProcessId { get; init; }
     public string? Context { get; init; }
 
-    public override string ToString()
-    {
-        return Exception?.Message ?? Message ?? "Log Item";
-    }
+    public override string ToString() => EventId.Equals(default)
+            ? Exception?.Message ?? Message ?? "None"
+            : EventId.ToString();
 }

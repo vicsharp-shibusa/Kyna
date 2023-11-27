@@ -40,13 +40,13 @@ internal sealed class Logger : ILogger
             throw new ArgumentException($"{nameof(state)} and {nameof(exception)} can not both be null.");
         }
 
-        Sql.DataAccessObjects.Log? logDao = null;
-        Sql.DataAccessObjects.EventLog? eventLogDao = null;
-
         LogItem? logItem = state is not null && state is LogItem ? state as LogItem : null;
-
         EventId evId = logItem is not null && !logItem.EventId.Equals(default) ? logItem.EventId : eventId;
 
+        Sql.DataAccessObjects.Log? logDao;
+        Sql.DataAccessObjects.EventLog? eventLogDao = null;
+
+        // TODO: not sure this logic is best; I think this writes logs when we may only want to write event logs.
         if (logItem is null)
         {
             logDao = new()

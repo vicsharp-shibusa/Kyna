@@ -21,7 +21,6 @@ internal class LoggerProvider : ILoggerProvider
     {
         if (string.IsNullOrWhiteSpace(connectionString)) { throw new ArgumentNullException(nameof(connectionString)); }
 
-        //TODO: do we need a backup logger here?
         dbContext = new DbContext(connectionString);
         sqlBuilder = new SqlBuilder(DatabaseEngine.PostgreSql);
 

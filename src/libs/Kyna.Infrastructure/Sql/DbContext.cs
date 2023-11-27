@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Kyna.Logging;
 using Microsoft.Extensions.Logging;
 using Npgsql;
 
@@ -6,12 +7,9 @@ namespace Kyna.Infrastructure.Sql;
 
 internal class DbContext
 {
-    protected ILogger? logger;
-
-    public DbContext(string connectionString, ILogger? logger = null)
+    public DbContext(string connectionString)
     {
         ConnectionString = connectionString;
-        this.logger = logger;
     }
 
     public string ConnectionString { get; }
@@ -45,7 +43,7 @@ internal class DbContext
         }
         catch (Exception exc)
         {
-            logger?.LogCritical(exc, $"Failure to execute SQL in {nameof(Execute)}", sql);
+            KLogger.LogCritical(exc, $"Failure to execute SQL in {nameof(Execute)}", sql);
             transaction.Rollback();
             throw;
         }
@@ -73,7 +71,7 @@ internal class DbContext
         }
         catch (Exception exc)
         {
-            logger?.LogCritical(exc, $"Failure to execute SQL in {nameof(ExecuteAsync)}", sql);
+            KLogger.LogCritical(exc, $"Failure to execute SQL in {nameof(ExecuteAsync)}", sql);
             await transaction.RollbackAsync(cancellationToken);
             throw;
         }
@@ -97,7 +95,7 @@ internal class DbContext
         }
         catch (Exception exc)
         {
-            logger?.LogCritical(exc, $"Failure to query SQL in {nameof(Query)}", sql);
+            KLogger.LogCritical(exc, $"Failure to query SQL in {nameof(Query)}", sql);
             throw;
         }
         finally
@@ -123,7 +121,7 @@ internal class DbContext
         }
         catch (Exception exc)
         {
-            logger?.LogCritical(exc, $"Failure to query SQL in {nameof(QueryAsync)}", sql);
+            KLogger.LogCritical(exc, $"Failure to query SQL in {nameof(QueryAsync)}", sql);
             throw;
         }
         finally
@@ -146,7 +144,7 @@ internal class DbContext
         }
         catch (Exception exc)
         {
-            logger?.LogCritical(exc, $"Failure to query SQL in {nameof(QueryFirstOrDefault)}", sql);
+            KLogger.LogCritical(exc, $"Failure to query SQL in {nameof(QueryFirstOrDefault)}", sql);
             throw;
         }
         finally
@@ -172,7 +170,7 @@ internal class DbContext
         }
         catch (Exception exc)
         {
-            logger?.LogCritical(exc, $"Failure to query SQL in {nameof(QueryFirstOrDefaultAsync)}", sql);
+            KLogger.LogCritical(exc, $"Failure to query SQL in {nameof(QueryFirstOrDefaultAsync)}", sql);
             throw;
         }
         finally
