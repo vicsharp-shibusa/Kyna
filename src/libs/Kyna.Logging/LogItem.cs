@@ -4,34 +4,36 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Kyna.Infrastructure")]
 namespace Kyna.Logging;
 
-internal class LogItem
+public class LogItem
 {
-    public LogItem(
-        LogLevel logLevel,
-        EventId eventId,
-        string? message,
-        Exception? exception,
-        string? scope)
+    internal LogItem()
     {
-        if (string.IsNullOrWhiteSpace(message) && exception == null && eventId == default)
-        {
-            throw new ArgumentException($"Either {nameof(message)}, {nameof(exception)}, or {nameof(eventId)} is required.");
-        }
-
-        LogLevel = logLevel;
-        EventId = eventId;
-        Message = message;
-        Exception = exception;
-        Scope = scope;
-        UtcTimestamp = DateTime.UtcNow;
     }
 
-    public LogLevel LogLevel { get; }
-    public EventId EventId { get; }
-    public string? Message { get; }
-    public Exception? Exception { get; }
-    public string? Scope { get; }
-    public DateTime UtcTimestamp { get; }
+    public LogItem(string? message, LogLevel logLevel = LogLevel.Information,
+        string? scope = null, string? context = null, Guid? processId = null) : this()
+    {
+        LogLevel = logLevel;
+        Message = message;
+        Scope = scope;
+        Context = context;
+        ProcessId = processId;
+    }
+
+    public LogItem(Exception exception, string? scope = null, string? context = null, Guid? processId = null)
+        : this(exception.Message, LogLevel.Critical, scope, context, processId)
+    {
+        Exception = exception;
+    }
+
+    public LogLevel LogLevel { get; init; } = LogLevel.Information;
+    public EventId EventId { get; init; }
+    public string? Message { get; init; }
+    public Exception? Exception { get; init; }
+    public string? Scope { get; init; }
+    public DateTime UtcTimestamp { get; internal init; } = DateTime.UtcNow;
+    public Guid? ProcessId { get; init; }
+    public string? Context { get; init; }
 
     public override string ToString()
     {

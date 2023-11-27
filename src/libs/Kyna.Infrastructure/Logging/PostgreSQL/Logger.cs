@@ -35,79 +35,50 @@ internal sealed class Logger : ILogger
     {
         if (!IsEnabled(logLevel)) { return; }
 
+        if (state is null && exception is null)
+        {
+            throw new ArgumentException($"{nameof(state)} and {nameof(exception)} can not both be null.");
+        }
+
         Sql.DataAccessObjects.Log? logDao = null;
         Sql.DataAccessObjects.EventLog? eventLogDao = null;
 
-        if (state == null)
-        {
-            if (exception == null) { throw new ArgumentException($"{nameof(state)} and {nameof(exception)} can not both be null."); }
+        LogItem? logItem = state is not null && state is LogItem ? state as LogItem : null;
 
-            if (eventId.Equals(default))
+        EventId evId = logItem is not null && !logItem.EventId.Equals(default) ? logItem.EventId : eventId;
+
+        if (logItem is null)
+        {
+            logDao = new()
             {
-                logDao = new()
-                {
-                    LogLevel = logLevel.ToString(),
-                    Message = exception?.Message,
-                    Exception = exception?.ToString(),
-                    Scope = scope?.ScopeMessage ?? scope?.ScopeMessage
-                };
-            }
-            else
-            {
-                eventLogDao = new()
-                {
-                    EventId = eventId.Id,
-                    EventName = eventId.Name
-                };
-            }
+                LogLevel = logLevel.ToString(),
+                Message = exception?.Message ?? state?.ToString() ?? "None",
+                Exception = exception?.ToString(),
+                Scope = scope?.ScopeMessage
+            };
         }
         else
         {
-            if (eventId.Equals(default))
+            logDao = new()
             {
-                if (state is LogItem)
-                {
-                    var item = state as LogItem;
-                    logDao = new Sql.DataAccessObjects.Log()
-                    {
-                        Message = item!.Message,
-                        Exception = item.Exception?.ToString(),
-                        LogLevel = item.LogLevel.ToString(),
-                        Scope = item.Scope ?? scope?.ScopeMessage
-                    };
-                }
-                else
-                {
-                    if (formatter is null)
-                    {
-                        logDao = new Sql.DataAccessObjects.Log()
-                        {
-                            Message = state.ToString(),
-                            Exception = exception?.ToString(),
-                            LogLevel = logLevel.ToString(),
-                            Scope = scope?.ScopeMessage
-                        };
-                    }
-                    else
-                    {
-                        logDao = new Sql.DataAccessObjects.Log()
-                        {
-                            Message = formatter(state, exception),
-                            Exception = exception?.ToString(),
-                            LogLevel = logLevel.ToString(),
-                            Scope = scope?.ScopeMessage
-                        };
-                    }
-                }
-            }
-            else
+                Message = logItem.Message,
+                Exception = logItem.Exception?.ToString(),
+                LogLevel = logItem.LogLevel.ToString(),
+                Scope = logItem.Scope ?? scope?.ScopeMessage,
+                ProcessId = logItem.ProcessId,
+                Context = logItem.Context
+            };
+        }
+
+        if (!evId.Equals(default))
+        {
+            eventLogDao = new()
             {
-                eventLogDao = new()
-                {
-                    EventId = eventId.Id,
-                    EventName = eventId.Name
-                };
-            }
+                EventId = evId.Id,
+                EventName = evId.Name,
+                ProcessId = logItem?.ProcessId,
+                Context = logItem?.Context
+            };
         }
 
         if (logDao is not null)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Kyna.Logging;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
@@ -11,16 +12,36 @@ Stopwatch timer = Stopwatch.StartNew();
 
 if (logger is not null)
 {
-    using (logger.BeginScope("Prototype"))
+    using (logger.BeginScope("LogItem Test"))
     {
+        Guid processId = Guid.NewGuid();
         for (int i = 0; i < 10; i++)
         {
-            logger.LogDebug($"Test at {DateTime.Now}");
+            var logItem = new LogItem("some information message",
+                logLevel: LogLevel.Warning,
+                context: "making YouTube videos",
+                processId: processId);
+            logger.Log<LogItem>(logItem.LogLevel, default, logItem, null,
+                (LogItem logItem, Exception? exc) =>
+                {
+                    return logItem.Message ?? exc?.Message ?? string.Empty;
+                });
+
+            //logger.LogDebug($"Test at {DateTime.Now}");
 
             if (i > 1 && i % 2 == 0)
             {
-                logger.LogCritical(new Exception("arbitrary exception"), "message");
-                await Task.Delay(500);  
+                //logger.LogCritical(new Exception("arbitrary exception"), "message");
+                logItem = new LogItem(new Exception("BAD"),
+                context: nameof(Program),
+                processId: processId);
+
+                logger.Log<LogItem>(logItem.LogLevel, new EventId(100, "Even Number"), logItem, null,
+                    (LogItem logItem, Exception? exc) =>
+                    {
+                        return logItem.Message ?? exc?.Message ?? string.Empty;
+                    });
+                await Task.Delay(500);
             }
         }
     }

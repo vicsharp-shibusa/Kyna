@@ -13,7 +13,6 @@ namespace Kyna.ApplicationServices
             {
                 builder.ClearProviders();
                 builder.AddProvider(new Infrastructure.Logging.PostgreSQL.LoggerProvider(connectionString, filter));
-                //builder.AddFilter(sourceName, LogLevel.Trace);
                 builder.SetMinimumLevel(minLogLevel);
             });
 
