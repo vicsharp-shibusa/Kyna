@@ -15,7 +15,7 @@ internal class LoggerProvider : ILoggerProvider
     private bool runQueue = true;
 
     private readonly DbContext dbContext;
-    private readonly ISqlBuilder sqlBuilder;
+    private readonly SqlBuilder sqlBuilder;
 
     public LoggerProvider(string? connectionString, Func<string, LogLevel, bool>? filter = null)
     {

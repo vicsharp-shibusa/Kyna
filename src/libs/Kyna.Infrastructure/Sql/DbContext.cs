@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using Kyna.Logging;
-using Microsoft.Extensions.Logging;
 using Npgsql;
 
 namespace Kyna.Infrastructure.Sql;

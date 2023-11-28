@@ -10,7 +10,19 @@ Configure();
 
 Stopwatch timer = Stopwatch.StartNew();
 
-KLogger.LogInformation("testing Klogger");
+Guid processId = Guid.NewGuid();
+string context = "kyna-prototype";
+string scope = nameof(Program);
+
+KLogger.LogEvent(100, "Application Started", context, processId);
+KLogger.LogTrace("testing Klogger Trace", scope, context, processId);
+KLogger.LogDebug("testing Klogger Debug", scope,context,processId);
+KLogger.LogInformation("testing Klogger", scope, context, processId);
+KLogger.LogWarning("testing Klogger Warning", scope, context, processId);
+KLogger.LogError("testing Klogger Error", scope, context, processId);
+KLogger.LogCritical("testing Klogger Critical", scope, context, processId);
+KLogger.LogCritical(new ArgumentNullException("fake"), scope, context, processId);
+KLogger.LogEvent(900, "Application Ended", context, processId);
 
 await Task.Delay(1000);
 
@@ -68,25 +80,3 @@ void Configure()
 
     KLogger.SetLogger(logger);
 }
-
-//void ConfigureServices()
-//{
-//    var services = new ServiceCollection();
-
-
-//    //logger = Kyna.ApplicationServices.LoggerFactory.CreatePostgreSqlLogger("Prototype")
-//    //string sourceName = "Prototype";
-
-//    //var loggerFactory = LoggerFactory.Create(builder =>
-//    //{
-//    //    builder.ClearProviders();
-//    //    builder.AddProvider(new )
-//    //    builder.AddConsole();
-//    //    builder.AddFilter("Program", LogLevel.Trace);
-//    //    builder.SetMinimumLevel(LogLevel.Trace);
-//    //});
-
-//    //logger = loggerFactory.CreateLogger<Program>();
-//    //_ = logger.BeginScope(sourceName);
-
-//}
