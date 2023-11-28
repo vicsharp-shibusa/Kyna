@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Kyna.Infrastructure")]
-namespace Kyna.Logging;
+namespace Kyna.Common.Logging;
 
 public class LogItem
 {

@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using Kyna.Logging;
+using Kyna.Common.Logging;
 using Npgsql;
 
 namespace Kyna.Infrastructure.Sql;

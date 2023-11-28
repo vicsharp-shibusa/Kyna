@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace Kyna.Logging;
+namespace Kyna.Common.Logging;
 
 public static class KLogger
 {
     private static ILogger? _logger = null;
 
-    public static void SetLogger(ILogger logger)
+    public static void SetLogger(ILogger? logger)
     {
         _logger = logger;
     }
@@ -38,7 +38,7 @@ public static class KLogger
     public static void LogCritical(Exception exception, string? scope = null, string? context = null, Guid? processId = null) =>
         Log(exception, LogLevel.Critical, scope, context, processId);
 
-    internal static void Log(LogLevel logLevel, string message,
+    public static void Log(LogLevel logLevel, string message,
         string? scope = null, string? context = null, Guid? processId = null)
     {
         if (_logger is not null && _logger.IsEnabled(logLevel))

@@ -1,4 +1,4 @@
-﻿using Kyna.Logging;
+﻿using Kyna.Common.Logging;
 using Microsoft.Extensions.Logging;
 
 namespace Kyna.Infrastructure.Logging.PostgreSQL;

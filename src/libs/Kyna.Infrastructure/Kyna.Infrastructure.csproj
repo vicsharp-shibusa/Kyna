@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Kyna.Logging\Kyna.Logging.csproj" />
+	  <ProjectReference Include="..\Kyna.Common\Kyna.Common.csproj" />
 	</ItemGroup>
 
 </Project>
