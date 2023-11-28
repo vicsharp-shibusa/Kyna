@@ -14,6 +14,9 @@ public static class KLogger
     public static void LogEvent(int eventId, string? eventName, string? context = null, Guid? processId = null) =>
         Log(new EventId(eventId, eventName), context, processId);
 
+    public static void LogEvent(EventId eventId, string? context = null, Guid? processId = null) =>
+        Log(eventId, context, processId);
+
     public static void LogTrace(string message, string? scope = null, string? context = null, Guid? processId = null) =>
         Log(LogLevel.Trace, message, scope, context, processId);
 
