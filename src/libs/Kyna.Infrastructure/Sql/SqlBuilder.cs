@@ -1,6 +1,6 @@
 ﻿namespace Kyna.Infrastructure.Sql;
 
-internal enum DatabaseEngine
+public enum DatabaseEngine
 {
     None = 0,
     PostgreSql,
